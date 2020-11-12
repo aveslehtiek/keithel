@@ -65,9 +65,9 @@ class PaymentMethod(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
-    service_area = MultiSelectField(null=True, blank=True, choices=service_area_tuple)
-    payment_method = MultiSelectField(null=True, blank=True, choices=payment_method_tuple)
-    exchange_method = MultiSelectField(null=True, blank=True, choices=exchange_method_tuple)
+    # service_area = MultiSelectField(null=True, blank=True, choices=service_area_tuple)
+    # payment_method = MultiSelectField(null=True, blank=True, choices=payment_method_tuple)
+    # exchange_method = MultiSelectField(null=True, blank=True, choices=exchange_method_tuple)
     website_url = models.CharField(null=True, blank=True, max_length=255)
     facebook_url = models.CharField(null=True, blank=True, max_length=255)
     instagram_url = models.CharField(null=True, blank=True, max_length=255)
