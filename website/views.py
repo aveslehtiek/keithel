@@ -9,13 +9,13 @@ from django.contrib.auth.models import User
 def home(request):
     users = User.objects.all()
     products = Product.objects.all()
-    service_area_query = Profile.objects.values('user', 'service_area')
-    service_area_list = list(service_area_query)
-    exchange_method_query = Profile.objects.values('user', 'exchange_method')
-    exchange_method_list = list(exchange_method_query)
-    payment_method_query = Profile.objects.values('user', 'payment_method')
-    payment_method_list = list(payment_method_query)
-    return render(request, 'home.html', {'users':users, 'products':products, 'service_area':service_area_list, 'exchange_method':exchange_method_list, 'payment_method':payment_method_list})
+    # service_area_query = Profile.objects.values('user', 'service_area')
+    # service_area_list = list(service_area_query)
+    # exchange_method_query = Profile.objects.values('user', 'exchange_method')
+    # exchange_method_list = list(exchange_method_query)
+    # payment_method_query = Profile.objects.values('user', 'payment_method')
+    # payment_method_list = list(payment_method_query)
+    return render(request, 'home.html', {'users':users, 'products':products})   # 'service_area':service_area_list, 'exchange_method':exchange_method_list, 'payment_method':payment_method_list
 
 # class HomeView(ListView):
 #     model = Product

@@ -30,13 +30,13 @@ class ProfilePageForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('service_area', 'payment_method', 'exchange_method', 'website_url', 'facebook_url', 'instagram_url')
+        fields = ('website_url', 'facebook_url', 'instagram_url')   #'service_area', 'payment_method', 'exchange_method', 
         
 
         widgets = {
-            'service_area': forms.CheckboxSelectMultiple(choices=service_area_tuple),
-            'payment_method': forms.CheckboxSelectMultiple(choices=payment_method_tuple),
-            'exchange_method': forms.CheckboxSelectMultiple(choices=exchange_method_tuple),
+            # 'service_area': forms.CheckboxSelectMultiple(choices=service_area_tuple),
+            # 'payment_method': forms.CheckboxSelectMultiple(choices=payment_method_tuple),
+            # 'exchange_method': forms.CheckboxSelectMultiple(choices=exchange_method_tuple),
             'website_url': forms.TextInput(attrs={'class': 'form-control'}),
             'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
             'instagram_url': forms.TextInput(attrs={'class': 'form-control'}),
