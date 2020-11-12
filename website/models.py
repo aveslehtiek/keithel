@@ -84,7 +84,7 @@ class Product(models.Model):
     header_image = models.ImageField(upload_to="images/", default="images/sample.png")
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
-    category = models.CharField(null=True, blank=True, max_length=255)
+    # category = models.CharField(null=True, blank=True, max_length=255)
     service_area = models.CharField(null=True, blank=True, max_length=255)
     payment_method = models.CharField(null=True, blank=True, max_length=255)
 
