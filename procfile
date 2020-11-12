@@ -1,1 +1,1 @@
-web: gunicorn keithel.wsgi --log-file -
+web: gunicorn keithel.wsgi

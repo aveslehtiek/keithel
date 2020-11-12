@@ -41,26 +41,26 @@ class PaymentMethod(models.Model):
         return reverse('home')
 
 
-service_area = ServiceArea.objects.all().values_list('service_area', 'service_area')
+# service_area = ServiceArea.objects.all().values_list('service_area', 'service_area')
 
-service_area_list = []
-for item in service_area:
-    service_area_list.append(item)
-service_area_tuple = tuple(service_area_list)
+# service_area_list = []
+# for item in service_area:
+#     service_area_list.append(item)
+# service_area_tuple = tuple(service_area_list)
 
-exchange_method = ExchangeMethod.objects.all().values_list('exchange_method', 'exchange_method')
+# exchange_method = ExchangeMethod.objects.all().values_list('exchange_method', 'exchange_method')
 
-exchange_method_list = []
-for item in exchange_method:
-    exchange_method_list.append(item)
-exchange_method_tuple = tuple(exchange_method_list)
+# exchange_method_list = []
+# for item in exchange_method:
+#     exchange_method_list.append(item)
+# exchange_method_tuple = tuple(exchange_method_list)
 
-payment_method = PaymentMethod.objects.all().values_list('payment_method', 'payment_method')
+# payment_method = PaymentMethod.objects.all().values_list('payment_method', 'payment_method')
 
-payment_method_list = []
-for item in payment_method:
-    payment_method_list.append(item)
-payment_method_tuple = tuple(payment_method_list)
+# payment_method_list = []
+# for item in payment_method:
+#     payment_method_list.append(item)
+# payment_method_tuple = tuple(payment_method_list)
 
 
 class Profile(models.Model):
