@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Update Product{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == product.seller.id %}
+        <h1>Update Product</h1>
+
+        <br/><br/>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success">Update</button>
+            </form>
+        </div>
+    {% else %}
+        Login as the seller of this product.
+    {% endif %}
+
+{% else %}
+Please Login
+
+{% endif %}
+
+{% endblock %}

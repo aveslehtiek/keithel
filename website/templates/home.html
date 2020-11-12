@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block homecontent %}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+
+                <br/><br/><br/>
+
+                <div class="card bg-light mb-3  position-fixed" style="max-width: 13rem;">
+                    <div class="card-header">Filter</div>
+                    <div class="card-body">
+
+                        <strong>Mode of exchange</strong>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Delivery
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                              Pick up
+                            </label>
+                        </div>
+
+                        <strong>Payment method</strong>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Cash
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                                UPI
+                            </label>
+                        </div>
+
+                        <strong>Category</strong>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                food and edibles
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                                gifts
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                            <label class="form-check-label" for="defaultCheck3">
+                                gifts
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                            <label class="form-check-label" for="defaultCheck4">
+                                electronics
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                            <label class="form-check-label" for="defaultCheck5">
+                                others
+                            </label>
+                        </div>
+
+                    </div>
+                  </div>
+                
+
+
+            </div>
+
+
+            <div class="col-9">
+                {% if user.is_authenticated %}
+
+                    {% if not user.profile %}
+                        <button type="submit" class="btn btn-info btn-sm ml-auto">Apply</button>
+                    {% endif %}
+
+
+                {% endif %}
+
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="container">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label"><strong>Service Area: </strong></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Kakching</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Imphal</label>
+                                </div>
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-info btn-sm ml-auto">Apply</button>
+                                </div>
+                            </div>
+
+                            
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+
+                <br/><br/>
+                    
+                    <center><h3><strong>BROWSE YOUR HEART'S DESIRED PRODUCTS FROM OUR SELLERS</strong></h3></center>
+
+                <br/><br/>
+
+                    {% for user in users %}
+                        {% if user.profile %}
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>SELLER</strong> : <a href="{% url 'show_profile_page' user.id %}">{{ user }}</a>
+                                    <div class="float-right"><small><strong>Accepted payment method: </strong></small> {% for i in payment_method %}
+                                        {% if user.id == i.user %}
+                                            {% if 'upi' in i.payment_method %}UPI{% endif %}   {% if 'cash' in i.payment_method %}Cash{% endif %}
+                                        {% endif %}
+                                        {% endfor %} | <small><strong>Mode of exchange: </strong></small> {% for i in exchange_method %}
+                                        {% if user.id == i.user %}
+                                            {% if 'pick up' in i.exchange_method %}Pick Up{% endif %}   {% if 'delivery' in i.exchange_method %}Delivery{% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <br/>
+                                    <small><strong>Service Area: </strong></small> {% for i in service_area %}
+                                    {% if user.id == i.user %}
+                                        {% if 'kakching' in i.service_area %}Kakching{% endif %}   {% if 'imphal' in i.service_area %}Imphal{% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                    </div> 
+                                </div>
+                                <div class="card-body">
+
+                                    <!-- {{ payment_method }} -->
+
+                                    
+
+                                    <div class="row row-cols-1 row-cols-md-5">
+
+                                        {% for product in products %}
+                                    
+                                        {% if product.seller == user %}
+                                    
+                                        <div class="col mb-4">
+                                        <div class="card h-100">
+                                            <img src="{{ product.header_image.url }}" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title"><a href="{% url 'product-detail' product.pk %}">{{ product.name}}</a></h5>
+                                            
+                                                <small>
+                                                    <a href="{% url 'category' product.category|slugify %}">{{ product.category }}</a>
+                                                </small>
+                                            <hr>
+                                            <p class="card-text">{{ product.description|slice:":200" }}</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    
+                                        
+                                        <!-- <li><a href="{% url 'product-detail' product.pk %}">{{ product.name}}</a>
+                                        - {{ product.seller }}
+                                        - <a href="{% url 'category' product.category|slugify %}">{{ product.category }}</a>
+                                    
+                                        
+                                        {% if user.is_authenticated %}
+                                            {% if user.id == product.seller.id %}
+                                                <br/>    
+                                                <small>
+                                                <a href="{% url 'update_product' product.pk %}">Edit</a> - 
+                                                <a href="{% url 'delete_product' product.pk %}">Delete</a>
+                                                </small>
+                                            {% endif %}
+                                        {% endif %}
+                                    
+                                        <br/>
+                                        {{ product.description|slice:":200" }}</li> -->
+                                    
+                                            {% endif %}
+                                    
+                                        {% endfor %}
+                                    
+                                    </div>
+                                    
+
+
+                                </div>
+                            </div>
+
+                        
+
+                            <br/>
+                
+                        {% endif %}
+                    {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

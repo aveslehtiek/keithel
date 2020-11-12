@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if category_products %}
+
+<h1>Product</h1>
+Categories - {{ category }}
+<br/>
+<br/>
+<ul>
+{% for product in category_products %}
+    <li><a href="{% url 'product-detail' product.pk %}">{{ product.name}}</a>
+    - {{ product.seller }}
+
+
+   {% if user.is_authenticated %}
+   | <small>
+   <a href="{% url 'update_product' product.pk %}">Edit</a> - 
+   <a href="{% url 'delete_product' product.pk %}">Delete</a>
+   </small>
+   {% endif %}
+
+   <br/>
+   {{ product.description|slice:":200" }}</li>
+
+{% endfor %}
+</ul>
+
+{% else %}
+Sorry this page does not exist...
+
+{% endif %}
+
+{% endblock %}
