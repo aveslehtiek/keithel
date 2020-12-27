@@ -151,4 +151,4 @@ AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='keithelseva
 AWS_S3_REGION_NAME = 'Asia Pacific (Mumbai) ap-south-1'
 AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
 MEDIA_URL = 'http://%s.s3.amazonaws.com/user_uploads/' % AWS_STORAGE_BUCKET_NAME
-# DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
