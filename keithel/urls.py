@@ -24,5 +24,7 @@ urlpatterns = [
     path('', include('website.urls')),
     path('sellers/', include('django.contrib.auth.urls')),
     path('sellers/', include('sellers.urls')),
+    path('', include('django_drive_app.urls')),
+    path('s3direct/', include('s3direct.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

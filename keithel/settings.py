@@ -127,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
@@ -148,5 +148,7 @@ AWS_QUERYSTRING_AUTH = False
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='keithelseva')
+AWS_S3_REGION_NAME = 'Asia Pacific (Mumbai) ap-south-1'
+AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
 MEDIA_URL = 'http://%s.s3.amazonaws.com/user_uploads/' % AWS_STORAGE_BUCKET_NAME
 # DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
