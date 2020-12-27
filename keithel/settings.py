@@ -89,12 +89,6 @@ DATABASES = {
     }
 }
 
-AWS_QUERYSTRING_AUTH = False
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-MEDIA_URL = 'http://%s.s3.amazonaws.com/user_uploads/' % AWS_STORAGE_BUCKET_NAME
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -149,3 +143,10 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 django_heroku.settings(locals())
+
+AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='keithelseva')
+MEDIA_URL = 'http://%s.s3.amazonaws.com/user_uploads/' % AWS_STORAGE_BUCKET_NAME
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
