@@ -1,5 +1,7 @@
 asgiref==3.2.10
 boto==2.49.0
+boto3==1.16.43
+botocore==1.19.43
 certifi==2020.6.20
 cycler==0.10.0
 dj-database-url==0.5.0
@@ -8,6 +10,7 @@ django-heroku==0.3.1
 django-multiselectfield==0.1.12
 django-storages==1.11.1
 gunicorn==20.0.4
+jmespath==0.10.0
 kiwisolver==1.2.0
 matplotlib==3.3.2
 numpy==1.19.3
@@ -17,6 +20,8 @@ pyparsing==2.4.7
 python-dateutil==2.8.1
 python-decouple==3.3
 pytz==2020.1
+s3transfer==0.3.3
 six==1.15.0
 sqlparse==0.4.1
+urllib3==1.26.2
 whitenoise==5.2.0
